@@ -11,7 +11,10 @@ const json=(statusCode,value)=>({statusCode,headers,body:JSON.stringify(value)})
 exports.handler=async event=>{
  const method=event.httpMethod||'GET';
  if(!['GET','HEAD'].includes(method))return json(409,{error:'Accountwijzigingen, betalingen en claims gebruiken de bestaande Amsterdam-website. Deze publicatie is een ontwerpvoorbeeld.'});
- const route=event.queryStringParameters?.__amrp_path;
+ // Netlify may expose the original path rather than the rewrite's query string.
+ let requestPath=event.path||'';
+ if(!requestPath.startsWith('/api/')&&event.rawUrl){try{requestPath=new URL(event.rawUrl).pathname;}catch{}}
+ const route=requestPath.startsWith('/api/')?requestPath.slice(5):event.queryStringParameters?.__amrp_path;
  if(!route||!/^[-a-zA-Z0-9_./]+$/.test(route)||route.split('/').some(part=>part==='.'||part==='..'))return json(400,{error:'Ongeldig API-pad.'});
  const target=new URL('/api/'+route,'https://amsterdamrp.nl');
  for(const [key,value]of Object.entries(event.queryStringParameters||{}))if(key!=='__amrp_path'&&value!==null)target.searchParams.set(key,value);
