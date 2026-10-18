@@ -34,3 +34,11 @@ Bron voor de overgenomen regelgeving en het regelpagina-ontwerp: https://heerlen
 ## Serverstatuskaart
 
 De gekozen kaart heeft Online/Offline/Onbekend, spelerstelling, capaciteit, controletijd en vernieuwen. De bron is de bestaande `/api/server/status`-koppeling. Alleen verse gegevens (maximaal 90 seconden oud) met een expliciete livebevestiging tonen Online. Nul spelers betekent op zichzelf niet Offline. Ontbrekende, gecachete, verouderde of onbereikbare gegevens tonen Onbekend en geen oude speleraantallen. Getest met online (0/128), expliciet offline, verouderde gegevens, live=false en netwerkfout, inclusief mobiele weergave en navigatie terug naar de APV.
+
+## Netlify-build toegevoegd
+
+`npm run build` maakt nu de publicatiemap `outputs`. `netlify.toml` legt dit commando, de publicatiemap, Node.js 22 en de functiemap vast. Er zijn geen externe npm-dependencies of netwerkverzoeken tijdens de build nodig. De bestaande Amsterdam-appbundels en media worden bij een bezoek via proxyregels geladen; de oorspronkelijke website moet bereikbaar blijven.
+
+De gebouwde uitvoer is lokaal gecontroleerd met de gepubliceerde redirectregels en dezelfde Netlify API-functie: direct openen en herladen van `/regels#apv` met 65 artikelen, winkel met 10 coinproducten, skin-editor met canvas en Woodland-preset, homepage en serverstatus. Geen mislukte lokale requests of JavaScript-fouten tijdens deze controle.
+
+De API-functie is gecontroleerd op no-store-headers, nul spelers, ongeldige paden, blokkeren van schrijfacties en een verbindingsfout die `unknown` oplevert. Discord-login verwijst naar de bestaande website. Net als de lokale preview migreert deze Netlify-publicatie geen account-, betaal- of claimbackend.

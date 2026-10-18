@@ -1,0 +1,17 @@
+# Account login stays on the existing server, where its OAuth callback is registered.
+/api/auth/discord/login https://amsterdamrp.nl/api/auth/discord/login 302!
+# Read-only public API bridge, matching the local design preview.
+/api/* /.netlify/functions/backend?__amrp_path=:splat 200!
+# Existing Amsterdam app assets; local design assets take precedence.
+/assets/* https://amsterdamrp.nl/assets/:splat 200
+/paymentMethods/* https://amsterdamrp.nl/paymentMethods/:splat 200
+/models/* https://amsterdamrp.nl/models/:splat 200
+/background.mp4 https://amsterdamrp.nl/background.mp4 200
+/logo.png https://amsterdamrp.nl/logo.png 200
+/favicon.ico https://amsterdamrp.nl/favicon.ico 200
+/checkout-fix.js https://amsterdamrp.nl/checkout-fix.js 200
+/announcements.js https://amsterdamrp.nl/announcements.js 200
+/discord-links.js https://amsterdamrp.nl/discord-links.js 200
+/role-claim.js https://amsterdamrp.nl/role-claim.js 200
+# SPA pages must load the built index on a direct visit or refresh.
+/* /index.html 200

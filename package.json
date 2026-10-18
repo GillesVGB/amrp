@@ -4,6 +4,7 @@
   "private": true,
   "description": "Amsterdam Roleplay design, regulations and read-only preview",
   "scripts": {
+    "build": "node scripts/build.mjs",
     "preview": "node preview.cjs",
     "design:preview": "node preview.cjs",
     "apply": "node apply-design.mjs",

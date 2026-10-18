@@ -8,7 +8,7 @@ De navigatie heeft aparte groepen: Ontdek Amsterdam, Regelgeving (APV, Strafcate
 
 ## Installeren op de bestaande hosting
 
-Dit is een integratiepakket voor de bestaande website, geen zelfstandige Netlify-website. De originele server en bestanden van amsterdamrp.nl zijn nodig voor de bestaande account- en betaalfuncties. Het pakket is nog niet op amsterdamrp.nl geïnstalleerd.
+De Netlify-configuratie publiceert het ontwerpvoorbeeld via `npm run build` met publicatiemap `outputs`. Voor de bestaande account- en betaalfuncties blijven de originele server en bestanden van amsterdamrp.nl nodig. Het ontwerp is nog niet op die oorspronkelijke server geïnstalleerd.
 
 1. Maak op de bestaande hosting een back-up van de publieke webmap.
 2. Pak dit pakket buiten die webmap uit.
@@ -38,7 +38,7 @@ Zet `index.html.before-heerlen-design` terug als `index.html`. Daarmee vervallen
 
 Voer `node preview.cjs` uit en open http://127.0.0.1:4300/regels#apv. Node.js 20 of nieuwer en internettoegang zijn nodig. Dit voorbeeld haalt de publieke originele app en gegevens van amsterdamrp.nl op en voegt lokaal de nieuwe assets toe. Het is afhankelijk van de bereikbaarheid van die website.
 
-Het voorbeeld stuurt geen browsersessiecookies naar de originele server en blokkeert schrijfacties. De Discord-login verwijst naar de echte website. Aankopen, uploads, accountwijzigingen en rolclaims kunnen daarom niet vanuit het ontwerpvoorbeeld worden uitgevoerd. Deze beperking geldt voor `preview.cjs`, niet voor de installatie op de bestaande hosting.
+Het lokale voorbeeld en de Netlify API-functie sturen geen browsersessiecookies naar de originele server en blokkeren schrijfacties. De Discord-login verwijst naar de echte website. Aankopen, uploads, accountwijzigingen en rolclaims kunnen daarom niet vanuit het ontwerpvoorbeeld worden uitgevoerd. Deze beperking geldt niet voor installatie van de ontwerpassets op de bestaande hosting.
 
 ## Controle
 

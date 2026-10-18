@@ -16,6 +16,20 @@ Open http://127.0.0.1:4300/regels#apv. Voor de homepage: http://127.0.0.1:4300/.
 
 Het voorbeeld haalt de publieke Amsterdam-app en gegevens van amsterdamrp.nl op en voegt de ontwerpbestanden lokaal toe. Deze repository bevat niet de oorspronkelijke React-broncode of backend. De preview is alleen-lezen: accountwijzigingen, betalingen, uploads en rolclaims worden geblokkeerd. De Discord-login gaat naar de bestaande website.
 
+## Publiceren op Netlify
+
+De repository bevat `netlify.toml`. De juiste instellingen zijn:
+
+- Build command: `npm run build`
+- Publish directory: `outputs`
+- Functions directory: `netlify/functions`
+
+De build werkt zonder netwerktoegang of extra npm-dependencies en maakt `outputs/index.html`, de ontwerpassets en de SPA-routering. Daardoor werken ook directe links naar `/regels`, `/doneren` en andere pagina's.
+
+De oorspronkelijke appbundels en media worden tijdens het bezoeken via Netlify-proxyregels van amsterdamrp.nl geladen. Openbare API-gegevens lopen via een Netlify Function zonder cache. Dit blijft afhankelijk van de bereikbaarheid van de bestaande website. Accountwijzigingen, betalingen en claims zijn, net als in de lokale preview, niet vanuit dit ontwerpvoorbeeld beschikbaar. Discord-login verwijst naar de bestaande website; de oorspronkelijke OAuth- en betaalbackend zijn niet gemigreerd.
+
+Laat amsterdamrp.nl op zijn huidige hosting staan. Als dat domein naar deze Netlify-site gaat wijzen, ontstaan er terugverwijzingen naar dezelfde site. Voor een volledige verhuizing zijn de oorspronkelijke appbroncode en backendconfiguratie nodig.
+
 ## Installeren op de bestaande Amsterdam-app
 
 ```sh
@@ -24,7 +38,7 @@ npm run apply -- --root /volledig/pad/naar/de/bestaande/publieke/webmap
 
 Het script controleert de bestaande React-build, bewaart de originele index en voegt de vijf ontwerpassets toe. De bestaande backend blijft verantwoordelijk voor inloggen, afrekenen, betalingen, winkelgegevens, skins en rolclaims.
 
-Dit project is een ontwerp- en integratiepakket. Alleen deze repository op een statische hosting publiceren levert de oorspronkelijke backendfuncties niet op. Er is geen automatische productie-deployment toegevoegd.
+Installatie van de ontwerpassets op de bestaande server behoudt daar de oorspronkelijke backendfuncties. De Netlify-publicatie is het ontwerpvoorbeeld met de hiervoor beschreven koppelingen.
 
 Zie [installatie en terugzetten](LEES-MIJ.md) en [uitgevoerde controles](CONTROLE.md).
 

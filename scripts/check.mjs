@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const files=['assets/amsterdam-heerlen.css','assets/amsterdam-heerlen.js','assets/amsterdam-regulations.css','assets/amsterdam-regulations-data.js','assets/amsterdam-regulations.js','apply-design.mjs','preview.cjs'];
+const files=['assets/amsterdam-heerlen.css','assets/amsterdam-heerlen.js','assets/amsterdam-regulations.css','assets/amsterdam-regulations-data.js','assets/amsterdam-regulations.js','apply-design.mjs','preview.cjs','scripts/build.mjs','netlify/functions/backend.cjs','public/index.html','public/_redirects','netlify.toml'];
 for(const file of files){
  const absolute=path.join(root,file);
  if(!fs.statSync(absolute).isFile())throw Error('Bestand ontbreekt: '+file);
