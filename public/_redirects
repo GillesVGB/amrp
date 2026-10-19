@@ -14,4 +14,10 @@
 /discord-links.js https://amsterdamrp.nl/discord-links.js 200
 /role-claim.js https://amsterdamrp.nl/role-claim.js 200
 # SPA pages must load the built index on a direct visit or refresh.
+/updates /community.html 200
+/updates/ /community.html 200
+/vacatures /community.html 200
+/vacatures/ /community.html 200
+/admin /admin/ 301
+/admin/* /admin/index.html 200
 /* /index.html 200

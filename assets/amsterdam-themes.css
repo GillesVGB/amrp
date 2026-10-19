@@ -1,0 +1,73 @@
+/* Seasonal palettes use the existing component variables; decoration never captures input. */
+html.amrp-heerlen[data-amrp-season=halloween]{--amrp-bg:#100f19;--amrp-sidebar:#16131e;--amrp-surface:#1b1723;--amrp-border:#352a3d;--amrp-blue:#f2a765;--amrp-wash:#352336;--primary:225 129 58;--accent:53 35 54;--season-strong:#b75b2c;--season-glow:#d57b3020}
+html.amrp-heerlen[data-amrp-season=easter]{--amrp-blue:#c5a8e9;--amrp-wash:#2a253b;--primary:145 112 189;--accent:42 37 59;--season-strong:#8a64af;--season-glow:#a788c71a}
+html.amrp-heerlen[data-amrp-theme=light][data-amrp-season=halloween]{--amrp-bg:#fbf6f1;--amrp-sidebar:#fffaf6;--amrp-surface:#fff;--amrp-border:#e7d9ce;--amrp-blue:#a5531d;--amrp-wash:#fff0e5}
+html.amrp-heerlen[data-amrp-theme=light][data-amrp-season=easter]{--amrp-blue:#8053aa;--amrp-wash:#f1eaf8}
+html.amrp-heerlen[data-amrp-season=christmas],html.amrp-heerlen[data-amrp-theme=light][data-amrp-season=christmas]{color-scheme:dark;--amrp-bg:#0c1420;--amrp-sidebar:#101a27;--amrp-surface:#131f2e;--amrp-border:#2b3b50;--amrp-text:#f0f5fc;--amrp-muted:#b1c0d2;--amrp-quiet:#90a4bb;--amrp-blue:#d5e8fa;--amrp-wash:#203246;--background:12 20 32;--foreground:240 245 252;--card:19 31 46;--card-foreground:240 245 252;--muted:32 50 70;--muted-foreground:177 192 210;--border:43 59 80;--input:43 59 80;--accent:32 50 70;--accent-foreground:240 245 252;--primary:220 234 248;--primary-foreground:20 36 58;--season-strong:#dceaf8;--season-glow:#b9d9f40d}
+html.amrp-heerlen[data-amrp-season]:not([data-amrp-season=standard]) body{background-image:radial-gradient(ellipse at 100% 0,var(--season-glow),transparent 65%)}
+html.amrp-heerlen[data-amrp-season]:not([data-amrp-season=standard]) .btn-discord{background:var(--season-strong)!important;border-color:var(--season-strong)}
+html.amrp-heerlen[data-amrp-season]:not([data-amrp-season=standard]) .amrp-home-copy>div:last-child>a:first-child>button{background:var(--season-strong)}
+html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations{--blue-strong:#dceaf8;--green:#8cd7b9}
+[data-amrp-season=christmas] .amrp-topbar{background:#0c1420f5}
+html.amrp-heerlen[data-amrp-season=christmas] .btn-discord,html.amrp-heerlen[data-amrp-season=christmas] .amrp-home-copy>div:last-child>a:first-child>button,html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations .primary-button,html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations .skip-link{color:#14243a!important}
+html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations .sanction-badge{color:#efbbc7;background:#56334640;border-color:#77556960}
+html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations .sanction-badge[data-level=low]{color:#a1dbc4;background:#26483d55;border-color:#3e6c5b80}
+html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations .sanction-badge[data-level=medium]{color:#e2c89a;background:#51442c55;border-color:#79654070}
+html.amrp-heerlen[data-amrp-season=christmas] #amrp-regulations .sanction-badge[data-level=var]{color:var(--amrp-muted);background:var(--amrp-wash);border-color:var(--amrp-border)}
+.amrp-season-layer{position:fixed;inset:0 0 0 var(--amrp-nav,0px);pointer-events:none;z-index:1080;overflow:hidden;isolation:isolate}
+.amrp-season-layer svg{display:block;width:100%;height:100%;overflow:visible}
+.amrp-season-art{position:absolute;bottom:-4px;width:145px;height:140px;opacity:.92;filter:drop-shadow(0 8px 20px #0002)}
+.amrp-season-art.left{left:10px}.amrp-season-art.right{right:12px;width:115px;height:110px}
+[data-amrp-season=christmas] .amrp-season-art.right{width:115px;height:110px;bottom:-3px}
+[data-amrp-season=halloween] .amrp-season-art.right{width:105px;height:100px;bottom:-6px;transform:scaleX(-1)}
+.amrp-season-bauble{position:absolute;top:var(--amrp-header,76px);right:calc(24px + var(--ornament)*52px);width:46px;height:91px;transform:translateY(calc(var(--ornament)*14px));opacity:.85;filter:drop-shadow(0 3px 5px #56738a25)}
+.amrp-season-bauble:nth-child(4){filter:sepia(.35) drop-shadow(0 3px 5px #56738a25)}
+/* A fine silver cable with warm-white and icy lights, below the header. */
+.amrp-christmas-lights{position:absolute;inset:calc(var(--amrp-header,76px) - 2px) 0 auto;display:flex;height:22px;opacity:.85}
+.amrp-christmas-lights>span{position:relative;flex:1;min-width:0;height:16px}
+.amrp-christmas-lights>span:before{content:'';position:absolute;inset:-3px -1px auto;height:11px;border-bottom:1px solid #7e94a988;border-radius:0 0 50% 50%}
+.amrp-christmas-lights>span:after{content:'';position:absolute;top:7px;left:50%;width:5px;height:8px;border-radius:3px 3px 50% 50%;background:#ffefd0;box-shadow:0 0 5px #fff3d9b0,0 0 12px #ffe2ad45;animation:amrp-light-glow 7s calc(var(--bulb)*-.6s) ease-in-out infinite alternate}
+.amrp-christmas-lights>span:nth-child(3n):after{background:#e2f2ff;box-shadow:0 0 5px #e2f2ffb0,0 0 12px #abd6ff50}
+@keyframes amrp-light-glow{from{opacity:.6}to{opacity:1}}
+/* Snow caps are paint only: card contents, dimensions and hit areas stay intact. */
+html[data-amrp-season=christmas][data-amrp-season-effects=true] :is(#amrp-regulations .topic-card,.amrp-content .card-surface,.amrp-content .card-interactive){position:relative}
+html[data-amrp-season=christmas][data-amrp-season-effects=true] :is(#amrp-regulations .topic-card,.amrp-content .card-surface,.amrp-content .card-interactive,.amrp-server-card,.amrp-community-card):after{content:'';position:absolute;inset:-1px -1px auto;height:12px;border-radius:8px 8px 0 0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 14' preserveAspectRatio='none'%3E%3Cpath fill='%23f1f8ff' d='M0 0h400v5c-15 0-19 6-35 4-18-4-24-3-40-1-19 2-27-4-42-3-17 0-18 8-32 7-14-1-9-6-24-6-24 1-25 4-45 2-19-3-30-2-43 1-19 4-23-3-39-2-20 2-24 5-39 2C37 3 28 10 15 8 8 7 4 6 0 7Z'/%3E%3C/svg%3E") center top/100% 100% no-repeat;filter:drop-shadow(0 2px 2px #9fc8eb26);opacity:.94}
+.amrp-season-particle{position:absolute;left:var(--x);top:-24px;width:var(--size);height:var(--size);border-radius:50%;background:#f2f7ff;opacity:0;animation:amrp-season-fall var(--duration) var(--delay) linear infinite}
+[data-amrp-season=christmas] .amrp-season-particle{border-radius:0;background:none;color:#fff;filter:drop-shadow(0 1px 1px #577caaa0)}
+[data-amrp-season=christmas] .amrp-season-particle:nth-child(3n){color:#9fbcd6;filter:drop-shadow(0 1px 2px #fff)}
+[data-amrp-season=halloween] .amrp-season-particle{background:linear-gradient(135deg,#e5ac68,#9f4b28);transform:rotate(40deg);border-radius:0 80% 15%;width:7px;height:12px}
+[data-amrp-season=easter] .amrp-season-particle{background:#eab6cc;border-radius:0 80%;width:6px;height:10px}
+@keyframes amrp-season-fall{0%{opacity:0;translate:0 -24px;rotate:0deg}8%{opacity:.8}88%{opacity:.7}100%{opacity:0;translate:var(--drift,42px) 110vh;rotate:210deg}}
+/* A complete sleigh team crosses the content area, then waits off screen. */
+.amrp-santa-flight{position:absolute;top:clamp(165px,23vh,280px);left:0;width:clamp(340px,43vw,590px);aspect-ratio:760/240;filter:drop-shadow(0 9px 7px #4b688b27);offset-path:none;animation:amrp-santa-crossing 32s -5s linear infinite;will-change:transform}
+@keyframes amrp-santa-crossing{0%{transform:translateX(-110%) translateY(20px) rotate(-3deg)}58%,100%{transform:translateX(calc(100vw + 110%)) translateY(-70px) rotate(-5deg)}}
+.amrp-sleigh-bob,.amrp-reindeer{animation:amrp-team-bob 1.5s var(--deer-delay,0s) ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.amrp-deer-leg{transform-box:fill-box;transform-origin:top center;animation:amrp-deer-gallop 1.5s var(--deer-delay,0s) ease-in-out infinite}.amrp-deer-leg.back{animation-direction:reverse}
+@keyframes amrp-team-bob{50%{transform:translateY(-5px) rotate(-1deg)}}
+@keyframes amrp-deer-gallop{50%{transform:rotate(17deg)}}
+/* Low fog and candlelight keep Halloween atmospheric without covering text. */
+.amrp-halloween-moon{position:absolute;top:calc(var(--amrp-header,76px) + 2px);right:22px;width:165px;height:165px;opacity:.75}
+.amrp-halloween-web{position:absolute;top:var(--amrp-header,76px);left:0;width:135px;height:130px;opacity:.65}
+.amrp-halloween-bat{position:absolute;top:calc(var(--amrp-header,76px) + 65px + var(--bat)*30px);right:calc(60px + var(--bat)*55px);width:calc(30px + var(--bat)*7px);height:35px;opacity:.65;animation:amrp-bat-drift 9s var(--bat-delay) ease-in-out infinite}
+.amrp-bat-wing{transform-box:fill-box;animation:amrp-bat-flap .6s ease-in-out infinite alternate}.amrp-bat-wing.left{transform-origin:right center}.amrp-bat-wing.right{transform-origin:left center;animation-direction:alternate-reverse}
+@keyframes amrp-bat-flap{to{transform:scaleY(.4)}}
+@keyframes amrp-bat-drift{50%{translate:-30px 16px;rotate:-8deg}}
+.amrp-halloween-flyby{position:absolute;right:0;top:clamp(170px,32vh,350px);width:82px;height:92px;filter:drop-shadow(0 0 16px #d6d8ff35);animation:amrp-haunted-crossing 38s -4s linear infinite;will-change:transform}
+.amrp-halloween-flyby.bat{width:65px;height:45px;top:clamp(210px,40vh,420px);animation-duration:29s;animation-delay:-13s;filter:drop-shadow(0 0 5px #e6aac34a)}
+.amrp-ghost-body{transform-box:fill-box;transform-origin:center;animation:amrp-ghost-bob 2.8s ease-in-out infinite}
+@keyframes amrp-haunted-crossing{0%{transform:translateX(120px) translateY(0) rotate(-5deg)}12%{transform:translateX(calc(-22vw + 120px)) translateY(-24px) rotate(5deg)}28%{transform:translateX(calc(-57vw + 120px)) translateY(18px) rotate(-6deg)}48%,100%{transform:translateX(calc(-100vw - 120px)) translateY(-10px) rotate(4deg)}}
+@keyframes amrp-ghost-bob{50%{transform:translateY(-6px) rotate(4deg)}}
+.amrp-halloween-fog{position:absolute;bottom:-30px;left:-15%;width:130%;height:135px;opacity:.35;background:radial-gradient(ellipse at 10% 85%,#b9a2c12a,transparent 38%),radial-gradient(ellipse at 65% 100%,#bc9cbb40,transparent 45%);filter:blur(12px);animation:amrp-fog-drift 18s ease-in-out infinite alternate}
+@keyframes amrp-fog-drift{to{translate:6% -12px}}
+.amrp-pumpkin-light{animation:amrp-candle 4s ease-in-out infinite}
+@keyframes amrp-candle{0%,100%{opacity:1}35%{opacity:.7}38%{opacity:.95}70%{opacity:.8}}
+.amrp-season-layer[data-motion=false] .amrp-season-particle,.amrp-season-layer[data-motion=false] .amrp-santa-flight,.amrp-season-layer[data-motion=false] .amrp-halloween-flyby{display:none}
+.amrp-season-layer[data-motion=false] *{animation:none!important}
+.amrp-preview-maintenance{position:fixed;inset:0;z-index:5000;overflow:auto;outline:none;min-height:100dvh;display:grid;place-items:center;padding:35px;box-sizing:border-box;text-align:center;background:var(--amrp-bg);color:var(--amrp-text)}
+.amrp-preview-maintenance>div{max-width:540px}.amrp-preview-maintenance h1{font-size:36px;line-height:1.3;margin:20px 0}.amrp-preview-maintenance p{font-size:15px;color:var(--amrp-muted);line-height:1.8;white-space:pre-line;overflow-wrap:anywhere}.amrp-maintenance-label{font-size:10px;letter-spacing:2px;color:var(--amrp-blue)}
+html.amrp-maintenance-preview-on body>:not(.amrp-preview-maintenance){display:none!important}
+html.amrp-maintenance-preview-on body{margin:0;overflow:hidden}
+@media(max-width:760px){.amrp-season-art{width:95px;height:90px;opacity:.8}.amrp-season-art.right,[data-amrp-season=christmas] .amrp-season-art.right,[data-amrp-season=halloween] .amrp-season-art.right{width:80px;height:78px}.amrp-season-bauble{width:28px;height:60px;right:calc(5px + var(--ornament)*33px);opacity:.65}.amrp-santa-flight{width:350px;top:190px}.amrp-halloween-moon{width:115px;height:115px;right:4px}.amrp-halloween-web{width:80px;height:80px}.amrp-halloween-bat{width:30px;right:calc(25px + var(--bat)*37px)}.amrp-season-particle:nth-child(2n){display:none}.amrp-preview-maintenance{padding:24px}.amrp-preview-maintenance h1{font-size:29px}}
+@media(max-width:760px){.amrp-halloween-flyby{width:60px;height:70px}.amrp-halloween-flyby.bat{width:48px;height:35px}.amrp-christmas-lights>span:after{width:4px;height:6px}html[data-amrp-season=christmas][data-amrp-season-effects=true] :is(#amrp-regulations .topic-card,.amrp-content .card-surface,.amrp-content .card-interactive,.amrp-server-card,.amrp-community-card):after{height:9px}}
+@media(prefers-reduced-motion:reduce){.amrp-season-layer:not([data-force-motion=true]) .amrp-season-particle,.amrp-season-layer:not([data-force-motion=true]) .amrp-santa-flight,.amrp-season-layer:not([data-force-motion=true]) .amrp-halloween-flyby{display:none}.amrp-season-layer:not([data-force-motion=true]) *{animation:none!important}}
+@media print{.amrp-season-layer{display:none!important}html[data-amrp-season=christmas][data-amrp-season-effects=true] :is(#amrp-regulations .topic-card,.amrp-content .card-surface,.amrp-content .card-interactive,.amrp-server-card,.amrp-community-card):after{display:none}}

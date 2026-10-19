@@ -7,14 +7,15 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const output=path.join(root,'outputs');
 execFileSync(process.execPath,[path.join(root,'scripts/check.mjs')],{cwd:root,stdio:'inherit'});
 fs.mkdirSync(output,{recursive:true});
-for(const file of ['index.html','_redirects'])fs.copyFileSync(path.join(root,'public',file),path.join(output,file));
+fs.cpSync(path.join(root,'public'),output,{recursive:true});
 execFileSync(process.execPath,[path.join(root,'apply-design.mjs'),'--root',output],{cwd:root,stdio:'inherit'});
 // The installer backup is useful on an existing server, but is not a public asset.
 fs.rmSync(path.join(output,'index.html.before-heerlen-design'),{force:true});
 const html=fs.readFileSync(path.join(output,'index.html'),'utf8');
-for(const name of ['amsterdam-heerlen.css','amsterdam-regulations.css','amsterdam-regulations-data.js','amsterdam-heerlen.js','amsterdam-regulations.js']){
+for(const name of ['amsterdam-admin.css','amsterdam-admin.js','amsterdam-content-admin.js'])fs.copyFileSync(path.join(root,'assets',name),path.join(output,'assets',name));
+for(const name of ['amsterdam-heerlen.css','amsterdam-regulations.css','amsterdam-community.css','amsterdam-themes.css','amsterdam-regulations-data.js','amsterdam-heerlen.js','amsterdam-regulations.js','amsterdam-community.js','amsterdam-season-art.js','amsterdam-themes.js']){
  if(!html.includes('/assets/'+name)||!fs.statSync(path.join(output,'assets',name)).isFile())throw Error('Publicatiebestand ontbreekt: '+name);
 }
 fs.writeFileSync(path.join(output,'build-info.json'),JSON.stringify({app:'Amsterdam Roleplay',commit:process.env.COMMIT_REF||'local',builtAt:new Date().toISOString()},null,2)+'\n');
-const count=fs.readdirSync(path.join(output,'assets')).length+3;
+const count=fs.readdirSync(path.join(output,'assets')).length+4;
 console.log('Netlify-build klaar: outputs/index.html, SPA-routering en '+count+' publicatiebestanden.');
