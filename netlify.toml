@@ -8,11 +8,6 @@
 [functions]
   directory = "netlify/functions"
 
-# Temporary closure runs before static files, redirects and normal page routes.
-[[edge_functions]]
-  function = "maintenance"
-  path = "/*"
-
 [[headers]]
   for = "/admin/*"
   [headers.values]

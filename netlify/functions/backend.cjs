@@ -8,10 +8,7 @@ const headers={
 };
 const json=(statusCode,value)=>({statusCode,headers,body:JSON.stringify(value)});
 
-const siteMaintenance=true;
 exports.handler=async event=>{
- // Guard the function's direct endpoint as well as the normal website routes.
- if(siteMaintenance)return json(503,{error:'De website is tijdelijk gesloten voor onderhoud.'});
  const method=event.httpMethod||'GET';
  if(!['GET','HEAD'].includes(method))return json(409,{error:'Accountwijzigingen, betalingen en claims gebruiken de bestaande Amsterdam-website. Deze publicatie is een ontwerpvoorbeeld.'});
  // Netlify may expose the original path rather than the rewrite's query string.
